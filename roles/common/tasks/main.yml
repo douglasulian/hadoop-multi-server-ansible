@@ -5,9 +5,9 @@
 - authorized_key: user={{ hadoop_user }} key="{{ lookup('file', '/home/vagrant/src/roles/common/templates/hadoop_rsa.pub') }}"
 
 - name: unpack hadoop
-  unarchive: src=/home/vagrant/src/roles/common/templates/hadoop-2.7.1.tar.gz dest=/usr/local owner={{ hadoop_user}} group={{ hadoop_group }} creates=/usr/local/hadoop
+  unarchive: src=/home/vagrant/src/roles/common/templates/hadoop-2.7.4.tar.gz dest=/usr/local owner={{ hadoop_user}} group={{ hadoop_group }} creates=/usr/local/hadoop
 
-- command: mv /usr/local/hadoop-2.7.1 /usr/local/hadoop creates=/usr/local/hadoop removes=/usr/local/hadoop-2.7.1
+- command: mv /usr/local/hadoop-2.7.4 /usr/local/hadoop creates=/usr/local/hadoop removes=/usr/local/hadoop-2.7.4
 
 - lineinfile: dest=/home/hadoop/.bashrc regexp="HADOOP_HOME=" line="export HADOOP_HOME=/usr/local/hadoop"
 - lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin"

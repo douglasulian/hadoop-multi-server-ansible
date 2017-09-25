@@ -3,7 +3,7 @@
 
 #http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html
 
-PRIVATE_KEY_SOURCE      = 'C:\Users\watrous\.vagrant.d\insecure_private_key'
+PRIVATE_KEY_SOURCE      = '/home/douglas/.vagrant.d/insecure_private_key'
 PRIVATE_KEY_DESTINATION = '/home/vagrant/.ssh/id_rsa'
 MASTER_IP               = '192.168.51.4'
 DATA1_IP                = '192.168.51.5'
@@ -21,8 +21,8 @@ Vagrant.configure("2") do |config|
     master.vm.network "private_network", ip: MASTER_IP
     master.vm.provider "virtualbox" do |v|
       v.name = "master"
-      v.cpus = 2
-      v.memory = 3072
+      v.cpus = 1
+      v.memory = 1024
     end
     # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
     master.vm.provision :file do |file|
@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
     data1.vm.provider "virtualbox" do |v|
       v.name = "data1"
       v.cpus = 2
-      v.memory = 3072
+      v.memory = 2048
     end
     # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
     data1.vm.provision :file do |file|
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
     data2.vm.provider "virtualbox" do |v|
       v.name = "data2"
       v.cpus = 2
-      v.memory = 3072
+      v.memory = 2048
     end
     # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
     data2.vm.provision :file do |file|
